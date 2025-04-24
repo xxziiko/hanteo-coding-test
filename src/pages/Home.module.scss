@@ -1,0 +1,9 @@
+.home {
+  @include flex-col;
+  justify-content: space-between;
+  height: 900px;
+}
+
+.main {
+  height: 100%;
+}

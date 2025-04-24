@@ -1,9 +1,7 @@
+import Home from '@/pages/Home';
+
 function App() {
-  return (
-    <>
-      <div>렌딩</div>
-    </>
-  );
+  return <Home />;
 }
 
 export default App;
