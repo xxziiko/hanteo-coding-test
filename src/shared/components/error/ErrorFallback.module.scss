@@ -1,0 +1,21 @@
+.error {
+  @include flex-center-col;
+  gap: 12px;
+  height: 900px;
+
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    font-size: $font-sm;
+    color: $gray-dark;
+  }
+
+  button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: $font-sm;
+    border: 1px solid $gray-light;
+  }
+}
