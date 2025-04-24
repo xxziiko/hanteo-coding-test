@@ -22,7 +22,7 @@ function Carousel() {
         centeredSlides={true}
         autoplay={{
           delay: 1500,
-          disableOnInteraction: true,
+          disableOnInteraction: false,
         }}
       >
         {CAROUSEL_LIST.map((content) => (
