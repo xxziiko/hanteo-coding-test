@@ -1,3 +1,3 @@
 export default function ErrorFallback() {
-	return <div>Error</div>;
+  return <div>Error</div>;
 }
