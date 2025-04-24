@@ -1,0 +1,36 @@
+.contents {
+  padding: 12px;
+  background-color: #ebebeb;
+  height: 65%;
+  overflow: auto;
+}
+
+.item {
+  @include flex-col;
+  gap: 12px;
+  padding: 8px 0;
+  overflow: auto;
+}
+
+.item__wrapper {
+  @include flex-item;
+  gap: 6px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.item__image {
+  width: 60px;
+  height: 40px;
+  background-color: $gray-light;
+  border-radius: 4px;
+}
+
+.item__content {
+  @include flex-col;
+  width: 100%;
+
+  p {
+    font-size: $font-xs;
+  }
+}

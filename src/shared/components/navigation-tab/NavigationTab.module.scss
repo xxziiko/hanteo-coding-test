@@ -1,0 +1,13 @@
+.tab {
+  @include flex-evenly;
+  align-items: center;
+  padding: 16px 0;
+  font-weight: 700;
+  background-color: #ffb1b2;
+}
+
+.tab__item {
+  &--active {
+    color: #fff;
+  }
+}
