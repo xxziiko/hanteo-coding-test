@@ -1,10 +1,16 @@
-import { Footer } from '@shared/components';
+import {
+  Carousel,
+  Footer,
+} from '@shared/components';
 import styles from './Home.module.scss';
 
 export default function Home() {
   return (
     <div className={styles.home}>
-      <main className={styles.main}>{/* 메인 */}</main>
+      <main className={styles.main}>
+        <Carousel />
+
+      </main>
 
       <Footer />
     </div>
