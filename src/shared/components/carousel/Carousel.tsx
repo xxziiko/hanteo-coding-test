@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -6,7 +7,7 @@ import { CAROUSEL_LIST } from '@/shared/_mock';
 import { Card } from '@/shared/components';
 import styles from './Carousel.module.scss';
 
-export default function Carousel() {
+function Carousel() {
   return (
     <section className={styles.carousel}>
       <Swiper
@@ -33,3 +34,5 @@ export default function Carousel() {
     </section>
   );
 }
+
+export default memo(Carousel);
