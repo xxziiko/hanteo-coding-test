@@ -22,4 +22,4 @@ export const BANNER_LIST: BannerItem[] = [
     image: 'https://i.postimg.cc/bvJ91Xjz/IMG-4604-11zon.webp',
     link: 'https://github.com/xxziiko/',
   },
-];
+] as const;
