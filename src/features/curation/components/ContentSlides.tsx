@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import useSlide from '@/shared/hooks/useSlide';
+import { useSlide } from '@/features/curation';
 import styles from './ContentSlides.module.scss';
 
 export default function ContentSlides() {

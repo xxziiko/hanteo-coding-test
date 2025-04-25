@@ -3,8 +3,8 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { CAROUSEL_LIST } from '@/shared/_mock';
-import { Card } from '@/shared/components';
+import { BANNER_LIST } from '@/mocks';
+import { CardLink } from '@/shared/components';
 import styles from './Carousel.module.scss';
 
 function Carousel() {
@@ -25,9 +25,9 @@ function Carousel() {
           disableOnInteraction: false,
         }}
       >
-        {CAROUSEL_LIST.map((content) => (
+        {BANNER_LIST.map((content) => (
           <SwiperSlide key={content.id}>
-            <Card {...content} />
+            <CardLink {...content} />
           </SwiperSlide>
         ))}
       </Swiper>

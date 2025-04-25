@@ -1,10 +1,6 @@
-import useSlide from '@/shared/hooks/useSlide';
-import {
-  Carousel,
-  ContentSlides,
-  Footer,
-  NavigationTab,
-} from '@shared/components';
+import { Carousel } from '@/features/banner';
+import { ContentSlides, NavigationTab, useSlide } from '@/features/curation';
+import { Footer } from '@/shared/components';
 import styles from './Home.module.scss';
 
 export default function Home() {

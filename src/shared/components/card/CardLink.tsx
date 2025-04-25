@@ -1,7 +1,7 @@
-import type { CardItem } from '@/shared/_mock';
-import styles from './Card.module.scss';
+import type { BannerItem } from '@/features/banner/types';
+import styles from './CardLink.module.scss';
 
-export default function Card({ title, date, image, link }: CardItem) {
+export default function CardLink({ title, date, image, link }: BannerItem) {
   return (
     <div className={styles.card}>
       <a href={link} target="_blank" rel="noreferrer">
