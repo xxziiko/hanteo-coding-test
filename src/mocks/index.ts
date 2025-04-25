@@ -1,12 +1,6 @@
-export interface CardItem {
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-  link: string;
-}
+import type { BannerItem } from '@/features/banner/types';
 
-export const CAROUSEL_LIST: CardItem[] = [
+export const BANNER_LIST: BannerItem[] = [
   {
     id: 1,
     title: '[M COUNTDOWN] 10월 2주차 엠카 사전투표 진행',
