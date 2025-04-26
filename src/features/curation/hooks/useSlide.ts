@@ -5,7 +5,7 @@ const activeSlideAtom = atom(0);
 const swiperRefAtom = atom<Swiper | null>(null);
 
 export default function useSlide() {
-  const [activeSlide, setActiveSlide] = useAtom(activeSlideAtom);
+  const [activeSlideId, setActiveSlideId] = useAtom(activeSlideAtom);
   const [swiper, setSwiper] = useAtom<Swiper | null>(swiperRefAtom);
 
   const goToSlice = (index: number) => {
@@ -13,14 +13,14 @@ export default function useSlide() {
   };
 
   const handleSlideChange = (e: Swiper) => {
-    setActiveSlide(e.activeIndex);
+    setActiveSlideId(e.activeIndex);
   };
 
   const handleTabClick = (
     e: React.MouseEvent<HTMLButtonElement>,
     index: number,
   ) => {
-    setActiveSlide(index);
+    setActiveSlideId(index);
     goToSlice(index);
   };
 
@@ -29,7 +29,7 @@ export default function useSlide() {
   };
 
   return {
-    activeSlide,
+    activeSlideId,
     handleSlideChange,
     handleTabClick,
     handleSwiper,

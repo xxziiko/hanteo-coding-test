@@ -1,10 +1,16 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useSlide } from '@/features/curation';
+import { type CurationItem, curationQuery } from '@/features/curation';
+import { CURATION_PATH } from '@/shared/constants/paths';
+import type { CurationsPath } from '@/shared/constants/paths';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { Loader } from 'lucide-react';
+import { ImpressionArea } from 'react-simplikit';
 import styles from './ContentSlides.module.scss';
 
 export default function ContentSlides() {
-  const { handleSlideChange, handleSwiper } = useSlide();
+  const { activeSlideId, handleSlideChange, handleSwiper } = useSlide();
 
   return (
     <section className={styles.contents}>
@@ -15,9 +21,9 @@ export default function ContentSlides() {
           handleSwiper(swiper);
         }}
       >
-        {Array.from({ length: 6 }).map((_, index) => (
-          <SwiperSlide key={index.toString()}>
-            <Slide />
+        {Object.values(CURATION_PATH).map((path, index) => (
+          <SwiperSlide key={path}>
+            <Slide id={path} isActive={activeSlideId === index} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -25,30 +31,45 @@ export default function ContentSlides() {
   );
 }
 
-function Slide() {
+function Slide({ id, isActive }: { id: CurationsPath; isActive: boolean }) {
+  const { data: curations, fetchNextPage } = useInfiniteQuery(
+    curationQuery.list(id, isActive),
+  );
+
   return (
     <div className={styles.slide}>
       <h4>큐레이션 제목</h4>
 
-      <div className={styles.list}>
-        {Array.from({ length: 100 }).map((_, index) => (
-          <ListItem key={index.toString()} />
+      <ul className={styles.list}>
+        {curations?.map((curation) => (
+          <ListItem key={crypto.randomUUID()} {...curation} />
         ))}
-      </div>
+      </ul>
+
+      <ImpressionArea
+        onImpressionStart={fetchNextPage}
+        areaThreshold={0.2}
+        className={styles.loading}
+      >
+        <Loader className={styles.loader} />
+      </ImpressionArea>
     </div>
   );
 }
 
-function ListItem() {
+function ListItem({ title, description, image }: CurationItem) {
   return (
-    <div className={styles.item}>
+    <li className={styles.item}>
       <div className={styles.item__wrapper}>
-        <div className={styles.item__image} />
+        <div className={styles.item__image}>
+          <img src={image} alt={title} loading="lazy" />
+        </div>
+
         <div className={styles.item__content}>
-          <h5>큐레이션 제목</h5>
-          <p>큐레이션 설명</p>
+          <h5>{title}</h5>
+          <p>{description}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 }

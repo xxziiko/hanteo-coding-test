@@ -4,12 +4,15 @@ import { Footer } from '@/shared/components';
 import styles from './Home.module.scss';
 
 export default function Home() {
-  const { activeSlide, handleTabClick } = useSlide();
+  const { activeSlideId, handleTabClick } = useSlide();
 
   return (
     <div className={styles.home}>
       <main className={styles.main}>
-        <NavigationTab activeTab={activeSlide} onTabClick={handleTabClick} />
+        <NavigationTab
+          activeTabId={activeSlideId}
+          onTabClick={handleTabClick}
+        />
 
         <Carousel />
 

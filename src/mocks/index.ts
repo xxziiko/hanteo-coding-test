@@ -1,4 +1,5 @@
 import type { BannerItem } from '@/features/banner/types';
+import type { CurationItem } from '@/features/curation/types';
 
 export const BANNER_LIST: BannerItem[] = [
   {
@@ -23,3 +24,18 @@ export const BANNER_LIST: BannerItem[] = [
     link: 'https://github.com/xxziiko/',
   },
 ] as const;
+
+const generateDummyData = (category: string, count: number): CurationItem[] => {
+  return Array.from({ length: count }, (_, index) => ({
+    title: `${category} Item ${index + 1}`,
+    description: `${category} description for item ${index + 1}.`,
+    image: 'https://i.postimg.cc/bvJ91Xjz/IMG-4604-11zon.webp',
+  }));
+};
+
+export const CHART_DATA = generateDummyData('차트', 10);
+export const WHOOK_DATA = generateDummyData('Whook', 10);
+export const NEWS_DATA = generateDummyData('뉴스', 10);
+export const STORE_DATA = generateDummyData('스토어', 10);
+export const EVENT_DATA = generateDummyData('이벤트', 10);
+export const CHARGING_DATA = generateDummyData('충전소', 10);

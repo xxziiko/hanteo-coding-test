@@ -1,22 +1,14 @@
+import { TAB_LIST } from '@/shared/constants/tabs';
 import styles from './NavigationTab.module.scss';
 
-const TAB_LIST = [
-  '차트',
-  'Whook',
-  '이벤트',
-  '뉴스',
-  '스토어',
-  '충전소',
-] as const;
-
 export default function NavigationTab({
-  activeTab,
+  activeTabId,
   onTabClick,
 }: {
-  activeTab: number;
+  activeTabId: number;
   onTabClick: (e: React.MouseEvent<HTMLButtonElement>, index: number) => void;
 }) {
-  const isActive = (index: number) => index === activeTab;
+  const isActive = (index: number) => index === activeTabId;
 
   return (
     <nav className={styles.tab}>
