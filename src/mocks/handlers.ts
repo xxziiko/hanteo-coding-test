@@ -17,7 +17,7 @@ const CURATION_HANDLERS = [
   { path: CURATION_PATH.STORE, data: STORE_DATA },
   { path: CURATION_PATH.EVENT, data: EVENT_DATA },
   { path: CURATION_PATH.CHARGING, data: CHARGING_DATA },
-];
+] as const;
 
 export const handlers = [
   ...CURATION_HANDLERS.map(({ path, data }) =>
