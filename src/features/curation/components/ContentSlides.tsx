@@ -1,7 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { useSlide } from '@/features/curation';
-import { type CurationItem, curationQuery } from '@/features/curation';
+
+import {
+  type CurationItem,
+  curationQuery,
+  useScrollTop,
+  useSlide,
+} from '@/features/curation';
 import { CURATION_PATH } from '@/shared/constants/paths';
 import type { CurationsPath } from '@/shared/constants/paths';
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -11,9 +16,10 @@ import styles from './ContentSlides.module.scss';
 
 export default function ContentSlides() {
   const { activeSlideId, handleSlideChange, handleSwiper } = useSlide();
+  const { scrollRef } = useScrollTop({ activeTrigger: activeSlideId });
 
   return (
-    <section className={styles.contents}>
+    <section className={styles.contents} ref={scrollRef}>
       <Swiper
         className="mySwiper"
         onSlideChange={handleSlideChange}
