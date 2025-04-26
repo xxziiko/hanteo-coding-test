@@ -16,10 +16,7 @@ export default function useSlide() {
     setActiveSlideId(e.activeIndex);
   };
 
-  const handleTabClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    index: number,
-  ) => {
+  const handleTabClick = (index: number) => {
     setActiveSlideId(index);
     goToSlice(index);
   };

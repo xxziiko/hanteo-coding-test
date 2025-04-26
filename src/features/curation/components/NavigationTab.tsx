@@ -6,7 +6,7 @@ export default function NavigationTab({
   onTabClick,
 }: {
   activeTabId: number;
-  onTabClick: (e: React.MouseEvent<HTMLButtonElement>, index: number) => void;
+  onTabClick: (index: number) => void;
 }) {
   const isActive = (index: number) => index === activeTabId;
 
@@ -15,7 +15,7 @@ export default function NavigationTab({
       {TAB_LIST.map((tab, index) => (
         <button
           type="button"
-          onClick={(e) => onTabClick(e, index)}
+          onClick={() => onTabClick(index)}
           key={tab}
           className={`${styles.tab__item} ${
             isActive(index) && styles['tab__item--active']
