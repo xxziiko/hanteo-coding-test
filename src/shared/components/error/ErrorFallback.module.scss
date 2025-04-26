@@ -13,7 +13,7 @@
   }
 
   button {
-    border-radius: 10px;
+    border-radius: $radius-base;
     padding: 10px 20px;
     font-size: $font-sm;
     border: 1px solid $gray-light;

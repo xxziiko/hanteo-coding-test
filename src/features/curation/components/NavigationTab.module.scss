@@ -3,11 +3,11 @@
   align-items: center;
   padding: 16px 0;
   font-weight: 700;
-  background-color: #ffb1b2;
+  background-color: $pink-light;
 }
 
 .tab__item {
   &--active {
-    color: #fff;
+    color: $white;
   }
 }

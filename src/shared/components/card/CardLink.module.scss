@@ -1,5 +1,5 @@
 .card {
-  border-radius: 8px;
+  border-radius: $radius-s;
   height: 80%;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
@@ -42,10 +42,10 @@
   &__label {
     font-size: 10px;
     font-weight: 700;
-    border: 1px solid #fc5ca9;
-    border-radius: 12px;
+    border: 1px solid $pink-dark;
+    border-radius: $radius-m;
     padding: 2px 8px;
-    color: #fc5ca9;
+    color: $pink-dark;
   }
 
   &__date {
