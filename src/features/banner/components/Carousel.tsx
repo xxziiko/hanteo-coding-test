@@ -16,6 +16,7 @@ function Carousel() {
       <Swiper
         className={styles.swiper}
         modules={[Autoplay, Pagination]}
+        loop={true}
         pagination={{
           clickable: false,
           bulletActiveClass: styles['swiper-pagination-bullet-active'],
