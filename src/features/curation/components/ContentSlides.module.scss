@@ -1,0 +1,47 @@
+.contents {
+  padding: 12px 12px 30px;
+  background-color: #ebebeb;
+  overflow: auto;
+  height: 550px;
+}
+
+.item {
+  @include flex-col;
+  gap: 12px;
+  padding: 8px 0;
+
+  &__wrapper {
+    @include flex-item;
+    gap: 6px;
+    background-color: $white;
+    border-radius: $radius-xs;
+  }
+
+  &__image {
+    width: 60px;
+    height: 40px;
+    background-color: $gray-light;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: $radius-xs;
+    }
+  }
+
+  &__content {
+    @include flex-col;
+    width: 100%;
+
+    p {
+      font-size: $font-xs;
+    }
+  }
+}
+
+.loader {
+  @include loader-animation;
+  text-align: center;
+  padding: 10px 0;
+}

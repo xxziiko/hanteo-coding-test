@@ -1,0 +1,14 @@
+.tab {
+  @include flex-evenly;
+  align-items: center;
+  font-size: $font-sm;
+  font-weight: 700;
+  background-color: $pink-light;
+  height: 40px;
+}
+
+.tab__item {
+  &--active {
+    color: $white;
+  }
+}

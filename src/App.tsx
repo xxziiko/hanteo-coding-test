@@ -1,9 +1,9 @@
+import Home from '@/pages/Home';
+
+import './shared/styles/global.scss';
+
 function App() {
-  return (
-    <>
-      <div>렌딩</div>
-    </>
-  );
+  return <Home />;
 }
 
 export default App;
