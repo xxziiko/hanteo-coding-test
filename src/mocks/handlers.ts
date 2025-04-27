@@ -19,15 +19,16 @@ const CURATION_HANDLERS = [
   { path: CURATION_PATH.CHARGING, data: CHARGING_DATA },
 ] as const;
 
+const LIMIT_COUNT = 30 as const;
+
 export const handlers = [
   ...CURATION_HANDLERS.map(({ path, data }) =>
     http.get(`${API_PATH.CURATIONS}${path}`, ({ request }) => {
       const url = new URL(request.url);
       const page = url.searchParams.get('page') ?? 1;
-      const limit = url.searchParams.get('limit') ?? 30;
 
-      const start = (Number(page) - 1) * Number(limit);
-      const end = start + Number(limit);
+      const start = (Number(page) - 1) * Number(LIMIT_COUNT);
+      const end = start + Number(LIMIT_COUNT);
 
       return HttpResponse.json(data.slice(start, end));
     }),
