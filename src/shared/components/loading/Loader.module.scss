@@ -1,0 +1,10 @@
+.loading {
+  @include flex-center;
+  padding: 30px 0;
+  height: 100%;
+}
+
+.loader {
+  @include loader-animation;
+  color: $gray-dark;
+}

@@ -1,17 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
-export default function useScrollTop({
-  activeTrigger,
-}: {
-  activeTrigger: number;
-}) {
+export default function useScrollTop() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (scrollRef.current && activeTrigger !== null) {
+  const handleScrollTop = () => {
+    if (scrollRef.current) {
       scrollRef.current.scrollTo(0, 0);
     }
-  }, [activeTrigger]);
+  };
 
-  return { scrollRef };
+  return { scrollRef, handleScrollTop };
 }

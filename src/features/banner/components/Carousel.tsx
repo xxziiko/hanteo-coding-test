@@ -3,7 +3,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { CardLink } from '@/shared/components';
+import { Card } from '@/shared/components';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { bannerQuery } from '../queries';
 import styles from './Carousel.module.scss';
@@ -31,7 +31,7 @@ function Carousel() {
       >
         {banners.map((content) => (
           <SwiperSlide key={content.id}>
-            <CardLink {...content} />
+            <Card content={content} />
           </SwiperSlide>
         ))}
       </Swiper>

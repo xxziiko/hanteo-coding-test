@@ -21,8 +21,15 @@ const CURATION_HANDLERS = [
 
 export const handlers = [
   ...CURATION_HANDLERS.map(({ path, data }) =>
-    http.get(`${API_PATH.CURATIONS}${path}`, () => {
-      return HttpResponse.json(data);
+    http.get(`${API_PATH.CURATIONS}${path}`, ({ request }) => {
+      const url = new URL(request.url);
+      const page = url.searchParams.get('page') ?? 1;
+      const limit = url.searchParams.get('limit') ?? 30;
+
+      const start = (Number(page) - 1) * Number(limit);
+      const end = start + Number(limit);
+
+      return HttpResponse.json(data.slice(start, end));
     }),
   ),
 

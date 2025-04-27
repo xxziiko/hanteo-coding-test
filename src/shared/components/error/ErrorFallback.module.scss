@@ -1,20 +1,18 @@
 .error {
   @include flex-center-col;
-  gap: 12px;
-  height: 900px;
-
-  h2 {
-    text-align: center;
-  }
+  gap: 8px;
+  padding: 30px 0;
+  height: 100%;
 
   p {
+    text-align: center;
     font-size: $font-sm;
     color: $gray-dark;
   }
 
   button {
     border-radius: $radius-base;
-    padding: 10px 20px;
+    padding: 5px 10px;
     font-size: $font-sm;
     border: 1px solid $gray-light;
   }

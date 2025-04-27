@@ -1,9 +1,10 @@
 .tab {
   @include flex-evenly;
   align-items: center;
-  padding: 16px 0;
+  font-size: $font-sm;
   font-weight: 700;
   background-color: $pink-light;
+  height: 40px;
 }
 
 .tab__item {

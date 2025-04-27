@@ -1,8 +1,8 @@
 .contents {
-  padding: 12px;
+  padding: 12px 12px 30px;
   background-color: #ebebeb;
-  height: 65%;
   overflow: auto;
+  height: 550px;
 }
 
 .item {
@@ -41,7 +41,7 @@
 }
 
 .loader {
-  @include flex-center;
   @include loader-animation;
-  padding: 2rem 0;
+  text-align: center;
+  padding: 10px 0;
 }

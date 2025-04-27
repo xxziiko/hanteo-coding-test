@@ -2,33 +2,35 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import {
   type CurationItem,
-  curationQuery,
+  useActiveSlideId,
   useScrollTop,
-  useSlide,
+  useSwiper,
 } from '@/features/curation';
 import { CURATION_PATH } from '@/shared/constants/paths';
 import type { CurationsPath } from '@/shared/constants/paths';
-import { useInfiniteQuery } from '@tanstack/react-query';
 import { Loader } from 'lucide-react';
 import { ImpressionArea } from 'react-simplikit';
+import useQurationInfiniteQuery from '../hooks/useQurationInfiniteQuery';
 import styles from './ContentSlides.module.scss';
 
 export default function ContentSlides() {
-  const { activeSlideId, handleSlideChange, handleSwiper } = useSlide();
-  const { scrollRef } = useScrollTop({ activeTrigger: activeSlideId });
+  const { handleSlideChange } = useActiveSlideId();
+  const { handleSwiper } = useSwiper();
+  const { scrollRef, handleScrollTop } = useScrollTop();
 
   return (
     <section className={styles.contents} ref={scrollRef}>
       <Swiper
         className="mySwiper"
-        onSlideChange={handleSlideChange}
-        onSwiper={(swiper) => {
-          handleSwiper(swiper);
+        onSlideChange={(e) => {
+          handleSlideChange(e.activeIndex);
+          handleScrollTop();
         }}
+        onSwiper={handleSwiper}
       >
-        {Object.values(CURATION_PATH).map((path, index) => (
+        {Object.values(CURATION_PATH).map((path) => (
           <SwiperSlide key={path}>
-            <Slide id={path} isActive={activeSlideId === index} />
+            <Slide id={path} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -36,18 +38,22 @@ export default function ContentSlides() {
   );
 }
 
-function Slide({ id, isActive }: { id: CurationsPath; isActive: boolean }) {
-  const { data: curations, fetchNextPage } = useInfiniteQuery(
-    curationQuery.list(id, isActive),
-  );
+function Slide({ id }: { id: CurationsPath }) {
+  const {
+    data: curations,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useQurationInfiniteQuery({
+    path: id,
+  });
 
   return (
     <div className={styles.slide}>
       <h4>큐레이션 제목</h4>
 
       <ul className={styles.list}>
-        {curations?.map((curation) => (
-          <ListItem key={crypto.randomUUID()} {...curation} />
+        {curations.map((curation) => (
+          <ListItem key={curation.id} list={curation} />
         ))}
       </ul>
 
@@ -56,13 +62,19 @@ function Slide({ id, isActive }: { id: CurationsPath; isActive: boolean }) {
         areaThreshold={0.2}
         className={styles.loading}
       >
-        <Loader className={styles.loader} />
+        {isFetchingNextPage && (
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        )}
       </ImpressionArea>
     </div>
   );
 }
 
-function ListItem({ title, description, image }: CurationItem) {
+function ListItem({ list }: { list: CurationItem }) {
+  const { title, description, image } = list;
+
   return (
     <li className={styles.item}>
       <div className={styles.item__wrapper}>

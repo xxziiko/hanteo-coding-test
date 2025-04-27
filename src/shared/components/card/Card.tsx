@@ -1,7 +1,9 @@
 import type { BannerItem } from '@/features/banner/types';
-import styles from './CardLink.module.scss';
+import styles from './Card.module.scss';
 
-export default function CardLink({ title, date, image, link }: BannerItem) {
+export default function Card({ content }: { content: BannerItem }) {
+  const { title, date, image, link } = content;
+
   return (
     <div className={styles.card}>
       <a href={link} target="_blank" rel="noreferrer">

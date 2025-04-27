@@ -1,10 +1,9 @@
-import { ErrorFallback, Loader } from '@/shared/components';
-import { StrictMode, Suspense } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ErrorBoundary } from 'react-error-boundary';
-import './shared/styles/global.scss';
 import App from './App';
 import { Providers } from './Providers';
+import { ErrorFallback } from './shared/components';
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development') {
@@ -19,11 +18,13 @@ async function enableMocking() {
 enableMocking().then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <ErrorBoundary fallback={<ErrorFallback />}>
+      <ErrorBoundary
+        fallbackRender={({ resetErrorBoundary }) => (
+          <ErrorFallback resetErrorBoundary={resetErrorBoundary} />
+        )}
+      >
         <Providers>
-          <Suspense fallback={<Loader />}>
-            <App />
-          </Suspense>
+          <App />
         </Providers>
       </ErrorBoundary>
     </StrictMode>,

@@ -1,24 +1,42 @@
 import { Carousel } from '@/features/banner';
-import { ContentSlides, NavigationTab, useSlide } from '@/features/curation';
-import { Footer } from '@/shared/components';
+import { ContentSlides, NavigationTab } from '@/features/curation';
+import { ErrorFallback, Footer, Loader } from '@/shared/components';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import styles from './Home.module.scss';
 
 export default function Home() {
-  const { activeSlideId, handleTabClick } = useSlide();
-
   return (
-    <div className={styles.home}>
+    <div>
+      <NavigationTab />
+
       <main className={styles.main}>
-        <NavigationTab
-          activeTabId={activeSlideId}
-          onTabClick={handleTabClick}
-        />
+        <ErrorBoundary
+          fallbackRender={({ resetErrorBoundary }) => (
+            <ErrorFallback
+              resetErrorBoundary={resetErrorBoundary}
+              height="250px"
+            />
+          )}
+        >
+          <Suspense fallback={<Loader height="250px" />}>
+            <Carousel />
+          </Suspense>
+        </ErrorBoundary>
 
-        <Carousel />
-
-        <ContentSlides />
+        <ErrorBoundary
+          fallbackRender={({ resetErrorBoundary }) => (
+            <ErrorFallback
+              resetErrorBoundary={resetErrorBoundary}
+              height="550px"
+            />
+          )}
+        >
+          <Suspense fallback={<Loader height="550px" />}>
+            <ContentSlides />
+          </Suspense>
+        </ErrorBoundary>
       </main>
-
       <Footer />
     </div>
   );
