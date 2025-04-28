@@ -76,59 +76,27 @@ yarn dev
  ┣ 📂features  
  ┃ ┣ 📂banner  
  ┃ ┃ ┣ 📂components
- ┃ ┃ ┃ ┣ 📜Carousel.module.scss
- ┃ ┃ ┃ ┗ 📜Carousel.tsx
  ┃ ┃ ┣ 📜index.ts
  ┃ ┃ ┣ 📜queries.ts
  ┃ ┃ ┗ 📜types.ts
  ┃ ┗ 📂curation
  ┃ ┃ ┣ 📂components
- ┃ ┃ ┃ ┣ 📜ContentSlides.module.scss
- ┃ ┃ ┃ ┣ 📜ContentSlides.tsx
- ┃ ┃ ┃ ┣ 📜NavigationTab.module.scss
- ┃ ┃ ┃ ┗ 📜NavigationTab.tsx
  ┃ ┃ ┣ 📂hooks
- ┃ ┃ ┃ ┣ 📜useActiveSlideId.ts
- ┃ ┃ ┃ ┣ 📜useQurationInfiniteQuery.ts
- ┃ ┃ ┃ ┣ 📜useScrollTop.ts
- ┃ ┃ ┃ ┗ 📜useSwiper.ts
  ┃ ┃ ┣ 📜index.ts
  ┃ ┃ ┣ 📜queries.ts
  ┃ ┃ ┗ 📜types.ts
  ┣ 📂mocks
- ┃ ┣ 📜browser.ts
- ┃ ┣ 📜handlers.ts
- ┃ ┗ 📜index.ts
  ┣ 📂pages
- ┃ ┣ 📜Home.module.scss
- ┃ ┗ 📜Home.tsx
  ┣ 📂shared
  ┃ ┣ 📂components
  ┃ ┃ ┣ 📂card
- ┃ ┃ ┃ ┣ 📜Card.module.scss
- ┃ ┃ ┃ ┗ 📜Card.tsx
  ┃ ┃ ┣ 📂error
- ┃ ┃ ┃ ┣ 📜ErrorFallback.module.scss
- ┃ ┃ ┃ ┗ 📜ErrorFallback.tsx
  ┃ ┃ ┣ 📂footer
- ┃ ┃ ┃ ┣ 📜Footer.module.scss
- ┃ ┃ ┃ ┗ 📜Footer.tsx
  ┃ ┃ ┣ 📂loading
- ┃ ┃ ┃ ┣ 📜Loader.module.scss
- ┃ ┃ ┃ ┗ 📜Loader.tsx
- ┃ ┃ ┗ 📜index.ts
  ┃ ┣ 📂constants
- ┃ ┃ ┗ 📜paths.ts
  ┃ ┣ 📂styles
- ┃ ┃ ┣ 📜_mixins.scss
- ┃ ┃ ┣ 📜_variables.scss
- ┃ ┃ ┗ 📜global.scss
  ┃ ┣ 📂types
- ┃ ┃ ┗ 📜swiper.d.ts
  ┃ ┣ 📂utils
- ┃ ┃ ┣ 📜assert.ts
- ┃ ┃ ┣ 📜error.ts
- ┃ ┃ ┗ 📜index.ts
  ┃ ┗ 📜apis.ts
  ┣ 📜App.tsx
  ┣ 📜Providers.tsx
